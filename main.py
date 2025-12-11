@@ -466,11 +466,23 @@ def main():
             if enemy.y + 30 >= player.y:
                 lose_screen(score)
                 return main()
+
             for bullet in bullets[:]:
                 if enemy.x < bullet.x < enemy.x + enemy.width and enemy.y < bullet.y < enemy.y + enemy.height:
-                    bullets.remove(bullet)
-                    enemies.remove(enemy)
+                    # Remove bullet safely
+                    try:
+                        bullets.remove(bullet)
+                    except ValueError:
+                        pass
+
+                    # Remove enemy safely
+                    try:
+                        enemies.remove(enemy)
+                    except ValueError:
+                        pass
+
                     score += 100
+                    break  # prevent double-removal attempts
 
         if enemies and random.randint(1, 40) == 1:
             shooter = random.choice(enemies)
