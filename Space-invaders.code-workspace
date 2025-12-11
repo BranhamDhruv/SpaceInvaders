@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Space-invaders",
+			"path": "."
+		},
+		{
+			"name": "ships",
+			"path": "../Downloads/ships"
+		}
+	],
+	"settings": {}
+}
